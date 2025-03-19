@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
 using System.Security.Cryptography;
@@ -14,7 +14,7 @@ internal class Program
         {
             Console.Clear();
             Console.Write("Enter method(Write|Read): ");
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             string answer = Console.ReadLine().ToLower();
             Console.Clear();
             Console.ResetColor();
@@ -23,8 +23,9 @@ internal class Program
                 status = write();
                 if (status[1].Equals("green"))
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                } else if (status[1].Equals("red"))
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                }
+                else if (status[1].Equals("red"))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                 }
@@ -44,7 +45,7 @@ internal class Program
                     {
                         string[] snp_choice = { "surname", "name", "patronymic" };
                         Console.Write("Enter " + snp_choice[i] + ": ");
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
                         snp[i] = Console.ReadLine();
                         Console.ResetColor();
                         Console.Clear();
@@ -55,7 +56,7 @@ internal class Program
                 status = read(snp_data);
                 if (status[1].Equals("green"))
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
                 else if (status[1].Equals("red"))
                 {
@@ -64,10 +65,6 @@ internal class Program
                 Console.WriteLine("Status: " + status[0]);
                 Console.ResetColor();
                 Thread.Sleep(3000);
-            }
-            else
-            {
-                Console.WriteLine("Error");
             }
         }
     }
@@ -124,7 +121,7 @@ internal class Program
             {
                 string[] snp_choice = { "surname", "name", "patronymic" };
                 Console.Write("Enter " + snp_choice[i] + ": ");
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 snp[i] = Console.ReadLine();
                 Console.ResetColor();
                 Console.Clear();
@@ -141,12 +138,13 @@ internal class Program
             {
                 try
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     dmy[i] = int.Parse(Console.ReadLine());
                     Console.ResetColor();
                     Console.Clear();
                     break;
-                } catch (Exception)
+                }
+                catch (Exception)
                 {
                     Console.Write("Enter birth " + dmy_choice[i] + ": ");
                 }
@@ -161,7 +159,8 @@ internal class Program
                 if (dmy[2] % 4 == 0 && dmy[1] == 2)
                 {
                     max_day = int.Parse(data["2"].ToString()) + 1;
-                } else
+                }
+                else
                 {
                     max_day = int.Parse(data["2"].ToString());
                 }
@@ -180,7 +179,7 @@ internal class Program
         Console.WriteLine("Description: (exit to exit)");
         while (true)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             addition = Console.ReadLine();
             Console.ResetColor();
             if (addition.ToLower().Equals("exit"))
@@ -217,11 +216,12 @@ internal class Program
             Console.ReadKey();
             Console.Clear();
             return ["file was read successfully", "green"];
-        } catch (FileNotFoundException)
+        }
+        catch (FileNotFoundException)
         {
             return ["file not found.", "red"];
         }
-        
+
     }
 
     public static string gen_name_file(string snp)
